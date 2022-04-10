@@ -1,3 +1,10 @@
+import React from 'react';
+
 export const Message = (props) => {
-    return <div className='form__message'>{ props.message }</div>
-}
+  return (
+    <>
+      <p className="message__author">{props.message.author}</p>
+      <p className="message__text">{props.message.message}</p>
+    </>
+  );
+};
