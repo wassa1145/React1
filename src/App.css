@@ -1,5 +1,11 @@
 body {
   background-color: #f8f8f8;
+  font-family: Arial, Helvetica, sans-serif;
+}
+ul,p {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 .page {
   max-width: 1440px;
@@ -7,46 +13,107 @@ body {
   margin: 0 auto;
   box-sizing: border-box;
 }
-.form {
-  padding: 200px 0;
-  width: 445px;
+.content {
+  min-width: 445px;
+  max-width: 600px;
   margin: 0 auto;
+  background-color: #e4ebf8;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
-.form__message,
+.list,
+.form {
+  width: 100%;
+  padding: 20px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+.list {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+.form {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+.list ul {
+  display: flex;
+  flex-direction: column;
+}
+.message,
+.system-message,
 .form__bottom {
-  
   text-align: center;
   border-radius: 17px;
-  padding: 20px;
   background-color: #fff;
 }
-.form__message {
-  font-size: 28px;
-  width: 100%;
+.message,
+.system-message {
+  padding: 10px;
+  font-size: 18px;
+  width: 80%;
   position: relative;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   box-sizing: border-box;
   box-shadow: 0 0 10px rgb(0 0 0 / 20%);
 }
-.form__message::after {
+.message {
+  align-self: flex-end;
+}
+.system-message {
+  align-self: flex-start;
+}
+.message__author,
+.message__text {
+  text-align: start;
+}
+.message__author {
+  font-weight: bold;
+}
+/* .message::after {
   content: ''; 
   position: absolute;
-  left: 205px; 
-  bottom: -35px;
-  border: 15px solid transparent;
-  border-top: 24px solid #fff;
-}
+  right: -29px;
+  top: 19px;
+  border: 12px solid transparent;
+  border-left: 17px solid #fff;
+} */
 .form__textarea {
   width: 100%;
   font-size: 18px;
+  padding: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+}
+.form__input {
+  padding: 10px;
+  font-size: 18px;
+  margin-bottom: 20px;
+  width: 100%;
+  box-sizing: border-box;
 }
 .form__bottom {
-  margin: 30px auto;
   display: block;
   font-size: 22px;
   border-color: #cbcbcb;
   cursor: pointer;
+  height: 56px;
+  padding: 5px 15px;
+  align-self: flex-end;
+
 }
 .form__bottom:hover {
   background-color: rgb(250, 249, 249);
+}
+.form__wrapper {
+  margin-right: 30px;
+}
+
+.form__textarea::placeholder,
+.form__input::placeholder {
+  font-size: 18px;
+  font-family: Arial, Helvetica, sans-serif;
 }
