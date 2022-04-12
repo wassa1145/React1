@@ -5,8 +5,6 @@ import { Input } from './Input';
 import { List } from './List';
 
 export const Form = () => {
-  const [name] = useState('Отправить');
-  const [inputPlaceholder] = useState('Введите ваше имя');
   const [defaultMessage] = useState(
     'Мы получили ваше сообщение! В ближайшее время мы вам ответим.'
   );
@@ -52,11 +50,11 @@ export const Form = () => {
 
   return (
     <div className="content">
-      {<List messages={messageList} refEl={listEl} />}
+      <List messages={messageList} refEl={listEl} />
       <div className="form">
         <div className="form__wrapper">
           <Input
-            placeholder={inputPlaceholder}
+            placeholder="Введите ваше имя"
             author={author}
             change={changeАuthor}
           />
@@ -67,9 +65,9 @@ export const Form = () => {
           />
         </div>
         <Button
-          name={name}
+          name="Отправить"
           click={handleClick}
-          disabled={message && author ? false : true}
+          disabled={message && author}
         />
       </div>
     </div>
