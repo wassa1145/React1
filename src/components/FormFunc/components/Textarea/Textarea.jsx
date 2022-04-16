@@ -1,4 +1,5 @@
 import React from 'react';
+import './Textarea.css';
 
 export const Textarea = (props) => {
   return (
@@ -8,6 +9,7 @@ export const Textarea = (props) => {
       placeholder={props.placeholder}
       value={props.message}
       onChange={props.change}
+      data-testid="textarea"
     />
   );
 };

@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`List render with snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="list"
+    data-testid="messages-list"
+  >
+    <ul>
+      <li
+        class="message"
+        role="message"
+      >
+        <p
+          class="message__author"
+        >
+          Bot
+        </p>
+        <p
+          class="message__text"
+        >
+          new message
+        </p>
+      </li>
+      <li
+        class="message"
+        role="message"
+      >
+        <p
+          class="message__author"
+        >
+          User
+        </p>
+        <p
+          class="message__text"
+        >
+          user message
+        </p>
+      </li>
+    </ul>
+  </div>
+</DocumentFragment>
+`;

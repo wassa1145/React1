@@ -1,11 +1,13 @@
 import React from 'react';
+import './Button.css';
 
 export const Button = (props) => {
   return (
     <button
-      className="form__bottom"
+      className="form__button"
       disabled={props.disabled}
-      onClick={props.click}
+      data-testid="submit-button"
+      type="submit"
     >
       {props.name}
     </button>
