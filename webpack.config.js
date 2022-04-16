@@ -19,12 +19,38 @@ module.exports = {
         use: ['babel-loader'],
       },
       {
-        test: /\.css?$/i,
+        test: /\.s?css$/i,
+        exclude: /\.module\.s?css$/i,
         use: [
-          'style-loader',
-          'css-loader'
+          isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                mode: 'icss',
+                localIdentName: '[name]___[hash:base64:5]',
+              },
+            },
+          },
+          'sass-loader',
         ],
-      }
+      },
+      {
+        test: /\.module\.s?css$/,
+        use: [
+          isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                mode: 'local',
+                localIdentName: '[name]___[hash:base64:5]',
+              },
+            },
+          },
+          'sass-loader',
+        ],
+      },
     ]
   },
   plugins: [
