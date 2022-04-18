@@ -1,14 +1,15 @@
 import React from 'react';
 // import { within, userEvent } from '@storybook/testing-library';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { App } from './App';
 
 export default {
   title: 'MyComponents/Page',
   component: App,
-};
+}as ComponentMeta<typeof App>;
 
-const Template = (args) => <App {...args} />;
+const Template: ComponentStory<typeof App> = (args) => <App {...args} />;
 
 export const EmptyPage = Template.bind({});
 

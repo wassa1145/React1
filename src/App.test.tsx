@@ -21,21 +21,21 @@ describe('App', () => {
   });
 
   it('clear textarea on submit', async () => {
-    await userEvent.type(screen.getByTestId('textarea'), 'new message');
+    await userEvent.type(screen.getByRole('textbox'), 'new message');
     await userEvent.click(screen.getByTestId('submit-button'));
-    expect(screen.getByTestId('textarea')).toHaveValue('');
+    expect(screen.getByRole('textbox')).toHaveValue('');
   });
 
   it('add message on submit', async () => {
     const countMessages = screen.queryAllByRole('message').length;
-    await userEvent.type(screen.getByTestId('textarea'), 'new message');
+    await userEvent.type(screen.getByRole('textbox'), 'new message');
     await userEvent.click(screen.getByTestId('submit-button'));
     expect(screen.queryAllByRole('message').length).toBe(countMessages + 1);
   });
 
   it('add system message', async () => {
     const countMessages = screen.queryAllByRole('message').length;
-    await userEvent.type(screen.getByTestId('textarea'), 'new message');
+    await userEvent.type(screen.getByRole('textbox'), 'new message');
     await userEvent.click(screen.getByTestId('submit-button'));
     await waitFor(
       () =>
