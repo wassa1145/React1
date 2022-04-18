@@ -5,11 +5,11 @@ import '@testing-library/jest-dom';
 
 describe('Button', () => {
   it('render component', () => {
-    render(<Button />);
+    render(<Button name="Отправить"/>);
   });
 
   it('render with snapshot', () => {
-    const { asFragment } = render(<Button />);
+    const { asFragment } = render(<Button name="Отправить"/>);
     expect(asFragment()).toMatchSnapshot();
   });
 
@@ -19,7 +19,7 @@ describe('Button', () => {
   });
 
   it('button is disabled', () => {
-    render(<Button disabled />);
+    render(<Button name="Отправить" disabled />);
     expect(screen.getByTestId('submit-button')).toBeDisabled();
   });
 });

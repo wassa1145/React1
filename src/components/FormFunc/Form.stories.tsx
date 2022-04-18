@@ -1,14 +1,14 @@
 import React from 'react';
 // import { within, userEvent } from '@storybook/testing-library';
-
+import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Form } from './Form';
 
 export default {
   title: 'MyComponents/Form',
   component: Form,
-};
+} as ComponentMeta<typeof Form>;
 
-const Template = (args) => <Form {...args} />;
+const Template: ComponentStory<typeof Form> = (args) => <Form {...args} />;
 
 export const MessageForm = Template.bind({});
 
