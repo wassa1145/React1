@@ -3,6 +3,7 @@ module.exports = {
     browser: true,
     node: true,
     es6: true,
+    jest: true,
   },
   extends: [
     'prettier',
@@ -11,6 +12,9 @@ module.exports = {
     'plugin:react/recommended',
     'prettier',
     'plugin:react-hooks/recommended',
+    'plugin:storybook/recommended',
+    'plugin:@typescript-eslint/eslint-recommended',
+    'plugin:@typescript-eslint/recommended',
   ],
   parserOptions: {
     ecmaFeatures: {
@@ -21,6 +25,7 @@ module.exports = {
   },
   plugins: ['react', 'prettier', 'react-hooks', 'jest'],
   rules: {
+    'react/display-name': 'off',
     'prettier/prettier': [
       'error',
       {

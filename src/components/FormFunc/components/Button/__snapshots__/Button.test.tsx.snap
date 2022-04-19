@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button render with snapshot 1`] = `
+<DocumentFragment>
+  <button
+    class="MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButtonBase-root form__button css-1rwt2y5-MuiButtonBase-root-MuiButton-root"
+    data-testid="submit-button"
+    tabindex="0"
+    type="submit"
+  >
+    Отправить
+    <span
+      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+    />
+  </button>
+</DocumentFragment>
+`;

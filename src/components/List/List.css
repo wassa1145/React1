@@ -1,0 +1,43 @@
+.list {
+	width: 100%;
+  padding: 20px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  flex-grow: 1;
+  overflow-y: auto;
+}
+.list ul {
+  display: flex;
+  flex-direction: column;
+}
+ul,p {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+.message,
+.system-message {
+  text-align: center;
+  border-radius: 17px;
+  background-color: #fff;
+  padding: 10px;
+  font-size: 18px;
+  width: 80%;
+  position: relative;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  box-shadow: 0 0 10px rgb(0 0 0 / 20%);
+}
+.message {
+  align-self: flex-end;
+}
+.system-message {
+  align-self: flex-start;
+}
+.message__author,
+.message__text {
+  text-align: start;
+}
+.message__author {
+  font-weight: bold;
+}
