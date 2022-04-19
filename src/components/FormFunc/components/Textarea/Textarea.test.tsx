@@ -4,24 +4,26 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
 
+beforeEach(() => {
+  render(<Textarea change={jest.fn()} placeholder="Введите сообщение" />);
+});
+
 describe('Textarea', () => {
   it('render component', () => {
-    render(<Textarea />);
+    expect(screen.getByTestId('textarea')).toBeInTheDocument();
   });
 
   it('render with snapshot', () => {
-    const { asFragment } = render(<Textarea />);
+    const { asFragment } = render(<Textarea change={jest.fn()} message='' placeholder="Введите сообщение" />);
     expect(asFragment()).toMatchSnapshot();
   });
 
   it('render component', () => {
-    render(<Textarea />);
     expect(screen.getByTestId('textarea')).toBeInTheDocument();
   });
 
   it('input text', async () => {
-    render(<Textarea />);
-    await userEvent.type(screen.getByTestId('textarea'), 'new message');
-    expect(screen.getByTestId('textarea')).toHaveValue('new message');
+    await userEvent.type(screen.getByRole('textbox'), 'new message');
+    expect(screen.getByRole('textbox')).toHaveValue('new message');
   });
 });
