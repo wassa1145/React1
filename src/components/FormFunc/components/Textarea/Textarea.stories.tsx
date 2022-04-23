@@ -7,7 +7,9 @@ export default {
   component: Textarea,
 } as ComponentMeta<typeof Textarea>;
 
-const Template: ComponentStory<typeof Textarea> = (args) => <Textarea {...args} />;
+const Template: ComponentStory<typeof Textarea> = (args) => (
+  <Textarea {...args} />
+);
 
 export const Placeholder = Template.bind({});
 Placeholder.args = {

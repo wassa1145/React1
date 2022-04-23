@@ -1,4 +1,11 @@
-import React, { useState, useCallback, useEffect, FC, memo, useRef } from 'react';
+import React, {
+  useState,
+  useCallback,
+  useEffect,
+  FC,
+  memo,
+  useRef,
+} from 'react';
 import { Button } from './components/Button/Button';
 import { Textarea } from './components/Textarea/Textarea';
 import './Form.css';
@@ -16,9 +23,12 @@ export const Form: FC<FormProps> = memo(({ addMessage }) => {
     setMessage('');
     textFieldRef.current?.focus();
   };
-  const changeMessage = useCallback((event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setMessage(event.target.value);
-  }, []);
+  const changeMessage = useCallback(
+    (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+      setMessage(event.target.value);
+    },
+    []
+  );
 
   useEffect(() => {
     textFieldRef.current?.focus();

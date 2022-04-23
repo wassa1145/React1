@@ -13,7 +13,6 @@ export default {
 
 const Template: ComponentStory<typeof List> = (args) => <List {...args} />;
 
-
 export const Messages = Template.bind({});
 Messages.args = {
   messages: [
@@ -22,14 +21,14 @@ Messages.args = {
       author: 'Mr. Robot',
       message: 'Мы получили ваше сообщение! В ближайшее время мы вам ответим.',
       systemMessage: true,
-      id: '2' 
+      id: '2',
     },
-    { author: 'User', message: 'Сообщение 2', id: '3'  },
+    { author: 'User', message: 'Сообщение 2', id: '3' },
     {
       author: 'Mr. Robot',
       message: 'Мы получили ваше сообщение! В ближайшее время мы вам ответим.',
       systemMessage: true,
-      id: '4' 
+      id: '4',
     },
   ],
 };

@@ -1,16 +1,22 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { ChatList } from './ChatList';
+import { BrowserRouter } from 'react-router-dom';
 
 export default {
   title: 'MyComponents/ChatList',
   component: ChatList,
   argTypes: {
-    onButtonClick: { action: 'click' },
+    onAddChat: { action: 'click' },
+    deleteChat: { action: 'click' },
   },
 } as ComponentMeta<typeof ChatList>;
 
-const Template: ComponentStory<typeof ChatList> = (args) => <ChatList {...args} />;
+const Template: ComponentStory<typeof ChatList> = (args) => (
+  <BrowserRouter>
+    <ChatList {...args} />
+  </BrowserRouter>
+);
 
 export const Primary = Template.bind({});
 Primary.args = {

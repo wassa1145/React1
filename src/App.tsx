@@ -1,10 +1,18 @@
-import React, { FC, useState, useEffect, useCallback, useRef } from 'react';
+import React, { FC, useState, useMemo } from 'react';
 import { nanoid } from 'nanoid';
 import './App.css';
-import { Form } from './components/FormFunc/Form';
-import { List } from './components/List/List';
 import { ChatList } from './components/ChatList/ChatList';
 import { CONSTANTS } from './constants';
+import { Route, Routes } from 'react-router-dom';
+import { Header } from './components/Header/Header';
+import { Home } from './pages/Home';
+import { Profile } from './pages/Profile';
+import { Chats } from './pages/Chats';
+
+export interface Chat {
+  id: string;
+  name: string;
+}
 
 interface Message {
   id: string;
@@ -12,60 +20,76 @@ interface Message {
   message: string;
   systemMessage?: boolean;
 }
-const chats = [
-  { id: nanoid(), name: 'First' },
-  { id: nanoid(), name: 'Second' },
-  { id: nanoid(), name: 'Third' },
-];
+
+export interface Messages {
+  [key: string]: Message[];
+}
+
+const initialMessage: Messages = {
+  default: [
+    {
+      id: '1',
+      author: CONSTANTS.USER,
+      message: 'Hello geekbrains',
+    },
+  ],
+};
 
 export const App: FC = () => {
-  const [messageList, setMessageList] = useState<Message[]>([]);
-  const listEl = useRef<HTMLInputElement>(null);
+  const [messages, setMessages] = useState<Messages>(initialMessage);
 
-  const addMessage = useCallback((message: string) => {
-    setMessageList((prevMessage) => [
-      ...prevMessage,
-      {
+  const chatList = useMemo(
+    () =>
+      Object.entries(messages).map((chat) => ({
         id: nanoid(),
-        author: CONSTANTS.USER,
-        message,
-      },
-    ]);
-  }, []);
-  const scrollList = () => {
-    if (listEl.current) listEl.current.scrollTop = listEl.current.scrollHeight;
+        name: chat[0],
+      })),
+    [Object.entries(messages).length]
+  );
+
+  const onAddChat = (chat: Chat) => {
+    setMessages({
+      ...messages,
+      [chat.name]: [],
+    });
+  };
+  const deleteChat = (chatName: string) => () => {
+    const newMessages = { ...messages };
+    delete newMessages[chatName];
+    setMessages(newMessages);
   };
 
-  useEffect(() => {
-    if (
-      messageList.length &&
-      !messageList[messageList.length - 1].systemMessage
-    ) {
-      const timeout = setTimeout(() => {
-        setMessageList((prevMessage) => [
-          ...prevMessage,
-          {
-            id: nanoid(),
-            message: CONSTANTS.DEFAULT_MESSAGE,
-            author: CONSTANTS.BOT,
-            systemMessage: true,
-          },
-        ]);
-      }, 1000);
-      return () => {
-        clearTimeout(timeout);
-      };
-    }
-    scrollList();
-  }, [messageList.length]);
-
   return (
-    <div className="wrapper">
-      <ChatList chats={chats} />
-      <div className="content">
-        <List messages={messageList} listEl={listEl}/>
-        <Form addMessage={addMessage} />
-      </div>
-    </div>
+    <Routes>
+      <Route path="/" element={<Header />}>
+        <Route index element={<Home />} />
+        <Route path="profile" element={<Profile />} />
+        <Route path="chats">
+          <Route
+            index
+            element={
+              <ChatList
+                chats={chatList}
+                onAddChat={onAddChat}
+                deleteChat={deleteChat}
+              />
+            }
+          />
+          <Route
+            path=":chatId"
+            element={
+              <Chats
+                messages={messages}
+                setMessages={setMessages}
+                chatList={chatList}
+                onAddChat={onAddChat}
+                deleteChat={deleteChat}
+              />
+            }
+          />
+        </Route>
+      </Route>
+      <Route path="*" element={<h2>404</h2>} />
+    </Routes>
   );
 };

@@ -2,142 +2,72 @@
 
 exports[`App render with snapshot 1`] = `
 <DocumentFragment>
-  <div
-    class="wrapper"
+  <header
+    class="header"
   >
-    <ul
-      class="MuiList-root MuiList-padding css-h4y409-MuiList-root"
-      data-testid="chat-list"
-    >
-      <li
-        class="MuiListItem-root MuiListItem-gutters chats-item css-1nxmd3h-MuiListItem-root"
-      >
-        <div
-          class="MuiListItemButton-root MuiListItemButton-gutters MuiButtonBase-root css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
-          role="button"
-          tabindex="0"
-        >
-          <div
-            class="MuiListItemText-root css-tlelie-MuiListItemText-root"
-          >
-            <span
-              class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
-            >
-              First
-            </span>
-          </div>
-          <span
-            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-          />
-        </div>
-      </li>
-      <li
-        class="MuiListItem-root MuiListItem-gutters chats-item css-1nxmd3h-MuiListItem-root"
-      >
-        <div
-          class="MuiListItemButton-root MuiListItemButton-gutters MuiButtonBase-root css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
-          role="button"
-          tabindex="0"
-        >
-          <div
-            class="MuiListItemText-root css-tlelie-MuiListItemText-root"
-          >
-            <span
-              class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
-            >
-              Second
-            </span>
-          </div>
-          <span
-            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-          />
-        </div>
-      </li>
-      <li
-        class="MuiListItem-root MuiListItem-gutters chats-item css-1nxmd3h-MuiListItem-root"
-      >
-        <div
-          class="MuiListItemButton-root MuiListItemButton-gutters MuiButtonBase-root css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
-          role="button"
-          tabindex="0"
-        >
-          <div
-            class="MuiListItemText-root css-tlelie-MuiListItemText-root"
-          >
-            <span
-              class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
-            >
-              Third
-            </span>
-          </div>
-          <span
-            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-          />
-        </div>
-      </li>
-    </ul>
-    <div
-      class="content"
+    <header
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionStatic css-hip9hq-MuiPaper-root-MuiAppBar-root"
     >
       <div
-        class="list"
-        data-testid="messages-list"
+        class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-1t29gy6-MuiToolbar-root"
       >
-        <ul />
-      </div>
-      <form
-        class="form"
-        data-testid="form"
-      >
-        <div
-          class="MuiFormControl-root MuiTextField-root form__textarea css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
-          data-testid="textarea"
-        >
-          <div
-            class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary Mui-focused MuiInputBase-formControl MuiInputBase-multiline css-dpjnhs-MuiInputBase-root-MuiOutlinedInput-root"
-          >
-            <textarea
-              aria-invalid="false"
-              class="MuiOutlinedInput-input MuiInputBase-input MuiInputBase-inputMultiline css-1sqnrkk-MuiInputBase-input-MuiOutlinedInput-input"
-              id=":r1:"
-              placeholder="Введите сообщение"
-              rows="4"
-              style="height: 0px; overflow: hidden;"
-            />
-            <textarea
-              aria-hidden="true"
-              class="MuiOutlinedInput-input MuiInputBase-input MuiInputBase-inputMultiline css-1sqnrkk-MuiInputBase-input-MuiOutlinedInput-input"
-              readonly=""
-              style="visibility: hidden; position: absolute; overflow: hidden; height: 0px; top: 0px; left: 0px; transform: translateZ(0); padding: 0px; width: 100%;"
-              tabindex="-1"
-            />
-            <fieldset
-              aria-hidden="true"
-              class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
-            >
-              <legend
-                class="css-hdw1oc"
-              >
-                <span
-                  class="notranslate"
-                >
-                  ​
-                </span>
-              </legend>
-            </fieldset>
-          </div>
-        </div>
         <button
-          class="MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButtonBase-root Mui-disabled form__button css-1rwt2y5-MuiButtonBase-root-MuiButton-root"
-          data-testid="submit-button"
-          disabled=""
-          tabindex="-1"
-          type="submit"
+          class="MuiButton-root MuiButton-text MuiButton-textInherit MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorInherit MuiButtonBase-root  css-1y942vo-MuiButtonBase-root-MuiButton-root"
+          tabindex="0"
+          type="button"
         >
-          Отправить
+          <a
+            aria-current="page"
+            class="header__link active"
+            href="/"
+            id="Home"
+            style="border-bottom: 1px solid #fff;"
+          >
+            Home
+          </a>
+          <span
+            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+          />
         </button>
-      </form>
-    </div>
-  </div>
+        <button
+          class="MuiButton-root MuiButton-text MuiButton-textInherit MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorInherit MuiButtonBase-root  css-1y942vo-MuiButtonBase-root-MuiButton-root"
+          tabindex="0"
+          type="button"
+        >
+          <a
+            class="header__link"
+            href="/profile"
+            id="Profile"
+          >
+            Profile
+          </a>
+          <span
+            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+          />
+        </button>
+        <button
+          class="MuiButton-root MuiButton-text MuiButton-textInherit MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorInherit MuiButtonBase-root  css-1y942vo-MuiButtonBase-root-MuiButton-root"
+          tabindex="0"
+          type="button"
+        >
+          <a
+            class="header__link"
+            href="/chats"
+            id="Chats"
+          >
+            Chats
+          </a>
+          <span
+            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+          />
+        </button>
+      </div>
+    </header>
+    <main>
+      <h2>
+        Home Page
+      </h2>
+    </main>
+  </header>
 </DocumentFragment>
 `;

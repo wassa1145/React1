@@ -2,54 +2,147 @@
 
 exports[`ChatList render with snapshot 1`] = `
 <DocumentFragment>
-  <ul
-    class="MuiList-root MuiList-padding css-h4y409-MuiList-root"
+  <div
+    class="chat-list-wrapper"
     data-testid="chat-list"
   >
-    <li
-      class="MuiListItem-root MuiListItem-gutters chats-item css-1nxmd3h-MuiListItem-root"
-    >
+    <div>
+      <h1>
+        Список чатов
+      </h1>
+      <ul
+        class="MuiList-root MuiList-padding css-h4y409-MuiList-root"
+      >
+        <li
+          class="MuiListItem-root MuiListItem-gutters chat-item css-g28sfz-MuiListItem-root"
+          role="chat"
+        >
+          <a
+            class="chats-link"
+            href="/chats/First"
+          >
+            <div
+              class="MuiListItemButton-root MuiListItemButton-gutters MuiButtonBase-root css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
+              role="button"
+              tabindex="0"
+            >
+              <div
+                class="MuiListItemText-root css-tlelie-MuiListItemText-root"
+              >
+                <span
+                  class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+                >
+                  First
+                </span>
+              </div>
+              <span
+                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+              />
+            </div>
+          </a>
+          <div
+            class="MuiListItemSecondaryAction-root css-518kzi-MuiListItemSecondaryAction-root"
+          >
+            <button
+              class="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButtonBase-root button-delete css-1e6y48t-MuiButtonBase-root-MuiButton-root"
+              role="button-delete"
+              tabindex="0"
+              type="button"
+            >
+              X
+              <span
+                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+              />
+            </button>
+          </div>
+        </li>
+        <li
+          class="MuiListItem-root MuiListItem-gutters chat-item css-g28sfz-MuiListItem-root"
+          role="chat"
+        >
+          <a
+            class="chats-link"
+            href="/chats/Second"
+          >
+            <div
+              class="MuiListItemButton-root MuiListItemButton-gutters MuiButtonBase-root css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
+              role="button"
+              tabindex="0"
+            >
+              <div
+                class="MuiListItemText-root css-tlelie-MuiListItemText-root"
+              >
+                <span
+                  class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+                >
+                  Second
+                </span>
+              </div>
+              <span
+                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+              />
+            </div>
+          </a>
+          <div
+            class="MuiListItemSecondaryAction-root css-518kzi-MuiListItemSecondaryAction-root"
+          >
+            <button
+              class="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButtonBase-root button-delete css-1e6y48t-MuiButtonBase-root-MuiButton-root"
+              role="button-delete"
+              tabindex="0"
+              type="button"
+            >
+              X
+              <span
+                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+              />
+            </button>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <form>
       <div
-        class="MuiListItemButton-root MuiListItemButton-gutters MuiButtonBase-root css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
-        role="button"
-        tabindex="0"
+        class="MuiFormControl-root MuiTextField-root form-input css-1u3bzj6-MuiFormControl-root-MuiTextField-root"
+        role="input-chat-name"
       >
         <div
-          class="MuiListItemText-root css-tlelie-MuiListItemText-root"
+          class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root"
         >
-          <span
-            class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+          <input
+            aria-invalid="false"
+            class="MuiOutlinedInput-input MuiInputBase-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
+            id=":r2:"
+            placeholder="Введите название чата"
+            type="text"
+            value=""
+          />
+          <fieldset
+            aria-hidden="true"
+            class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
           >
-            First
-          </span>
+            <legend
+              class="css-hdw1oc"
+            >
+              <span
+                class="notranslate"
+              >
+                ​
+              </span>
+            </legend>
+          </fieldset>
         </div>
-        <span
-          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-        />
       </div>
-    </li>
-    <li
-      class="MuiListItem-root MuiListItem-gutters chats-item css-1nxmd3h-MuiListItem-root"
-    >
-      <div
-        class="MuiListItemButton-root MuiListItemButton-gutters MuiButtonBase-root css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
-        role="button"
-        tabindex="0"
+      <button
+        class="MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeMedium MuiButton-outlinedSizeMedium MuiButtonBase-root Mui-disabled form__button css-1rwt2y5-MuiButtonBase-root-MuiButton-root"
+        data-testid="submit-button"
+        disabled=""
+        tabindex="-1"
+        type="submit"
       >
-        <div
-          class="MuiListItemText-root css-tlelie-MuiListItemText-root"
-        >
-          <span
-            class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
-          >
-            Second
-          </span>
-        </div>
-        <span
-          class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-        />
-      </div>
-    </li>
-  </ul>
+        Добавить новый чат
+      </button>
+    </form>
+  </div>
 </DocumentFragment>
 `;
