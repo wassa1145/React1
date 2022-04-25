@@ -3,3 +3,13 @@
   background-color: #fff;
   margin-right: 20px !important;
 }
+
+.main-dark .form__textarea {
+  background-color: rgb(153, 150, 150);
+  color: #fff !important;
+}
+
+.main-dark .form__textarea textarea,
+.main-dark .form__textarea textarea::placeholder {
+  color: #fff !important;
+}

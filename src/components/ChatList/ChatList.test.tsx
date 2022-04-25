@@ -1,7 +1,7 @@
 import React from 'react';
 import { ChatList } from './ChatList';
 import { render, screen } from '@testing-library/react';
-import { BrowserRouter } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 import '@testing-library/jest-dom';
 
 describe('ChatList', () => {
@@ -12,9 +12,9 @@ describe('ChatList', () => {
 
   beforeEach(() => {
     render(
-      <BrowserRouter>
+      <MemoryRouter>
         <ChatList chats={chats} onAddChat={jest.fn()} deleteChat={jest.fn()} />
-      </BrowserRouter>
+      </MemoryRouter>
     );
   });
 
@@ -24,9 +24,9 @@ describe('ChatList', () => {
 
   it('render with snapshot', () => {
     const { asFragment } = render(
-      <BrowserRouter>
+      <MemoryRouter>
         <ChatList chats={chats} onAddChat={jest.fn()} deleteChat={jest.fn()} />
-      </BrowserRouter>
+      </MemoryRouter>
     );
     expect(asFragment()).toMatchSnapshot();
   });
