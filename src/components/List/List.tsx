@@ -2,15 +2,15 @@ import React, { FC } from 'react';
 import './List.css';
 
 interface Message {
-  id: string
-  author: string,
-  message: string,
-  systemMessage?: boolean,
+  id: string;
+  author: string;
+  message: string;
+  systemMessage?: boolean;
 }
 
 interface MessagesListProps {
-  messages: Message[],
-  listEl?: React.RefObject<HTMLInputElement>,
+  messages: Message[];
+  listEl?: React.RefObject<HTMLInputElement>;
 }
 
 export const List: FC<MessagesListProps> = ({ messages, listEl }) => (

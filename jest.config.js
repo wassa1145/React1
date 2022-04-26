@@ -19,9 +19,8 @@ module.exports = {
   testEnvironment: 'jsdom',
 
   testRegex: '(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js|jsx)$',
-  
+
   transform: {
     '^.+\\.(js|jsx|ts|tsx)$': '<rootDir>/node_modules/babel-jest',
   },
- 
 };

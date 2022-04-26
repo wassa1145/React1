@@ -14,7 +14,9 @@ describe('Textarea', () => {
   });
 
   it('render with snapshot', () => {
-    const { asFragment } = render(<Textarea change={jest.fn()} message='' placeholder="Введите сообщение" />);
+    const { asFragment } = render(
+      <Textarea change={jest.fn()} message="" placeholder="Введите сообщение" />
+    );
     expect(asFragment()).toMatchSnapshot();
   });
 

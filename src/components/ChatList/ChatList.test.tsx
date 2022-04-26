@@ -1,6 +1,7 @@
 import React from 'react';
 import { ChatList } from './ChatList';
 import { render, screen } from '@testing-library/react';
+import { BrowserRouter } from 'react-router-dom';
 import '@testing-library/jest-dom';
 
 describe('ChatList', () => {
@@ -10,7 +11,11 @@ describe('ChatList', () => {
   ];
 
   beforeEach(() => {
-    render(<ChatList chats={chats} />);
+    render(
+      <BrowserRouter>
+        <ChatList chats={chats} onAddChat={jest.fn()} deleteChat={jest.fn()} />
+      </BrowserRouter>
+    );
   });
 
   it('render component', () => {
@@ -18,11 +23,15 @@ describe('ChatList', () => {
   });
 
   it('render with snapshot', () => {
-    const { asFragment } = render(<ChatList chats={chats} />);
+    const { asFragment } = render(
+      <BrowserRouter>
+        <ChatList chats={chats} onAddChat={jest.fn()} deleteChat={jest.fn()} />
+      </BrowserRouter>
+    );
     expect(asFragment()).toMatchSnapshot();
   });
 
   it('render component with text', () => {
-    expect(screen.getByText(/Second/)).toBeInTheDocument();
+    expect(screen.getByText(/First/)).toBeInTheDocument();
   });
 });

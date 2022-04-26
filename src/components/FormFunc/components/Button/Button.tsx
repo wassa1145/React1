@@ -3,8 +3,8 @@ import { Button as ButtonUI } from '@mui/material';
 import './Button.css';
 
 interface ButtonProps {
-  disabled: boolean,
-  name: string,
+  disabled: boolean;
+  name: string;
 }
 
 export const Button: FC<ButtonProps> = (props) => {
@@ -15,7 +15,8 @@ export const Button: FC<ButtonProps> = (props) => {
       disabled={props.disabled}
       data-testid="submit-button"
       type="submit"
-    >{props.name}
+    >
+      {props.name}
     </ButtonUI>
   );
 };
