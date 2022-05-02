@@ -28,6 +28,11 @@ ul,p {
   box-sizing: border-box;
   box-shadow: 0 0 10px rgb(0 0 0 / 20%);
 }
+.main-dark .message,
+.main-dark .system-message {
+  color: #fff !important;
+  background-color: rgb(153, 150, 150) !important;
+}
 .message {
   align-self: flex-end;
 }
