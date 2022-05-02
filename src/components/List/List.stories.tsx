@@ -16,17 +16,17 @@ const Template: ComponentStory<typeof List> = (args) => <List {...args} />;
 export const Messages = Template.bind({});
 Messages.args = {
   messages: [
-    { author: 'User', message: 'Сообщение 1', id: '1' },
+    { author: 'User', value: 'Сообщение 1', id: '1' },
     {
       author: 'Mr. Robot',
-      message: 'Мы получили ваше сообщение! В ближайшее время мы вам ответим.',
+      value: 'Мы получили ваше сообщение! В ближайшее время мы вам ответим.',
       systemMessage: true,
       id: '2',
     },
-    { author: 'User', message: 'Сообщение 2', id: '3' },
+    { author: 'User', value: 'Сообщение 2', id: '3' },
     {
       author: 'Mr. Robot',
-      message: 'Мы получили ваше сообщение! В ближайшее время мы вам ответим.',
+      value: 'Мы получили ваше сообщение! В ближайшее время мы вам ответим.',
       systemMessage: true,
       id: '4',
     },

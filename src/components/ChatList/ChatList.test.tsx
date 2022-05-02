@@ -13,7 +13,7 @@ describe('ChatList', () => {
   beforeEach(() => {
     render(
       <MemoryRouter>
-        <ChatList chats={chats} onAddChat={jest.fn()} deleteChat={jest.fn()} />
+        <ChatList />
       </MemoryRouter>
     );
   });
@@ -25,7 +25,7 @@ describe('ChatList', () => {
   it('render with snapshot', () => {
     const { asFragment } = render(
       <MemoryRouter>
-        <ChatList chats={chats} onAddChat={jest.fn()} deleteChat={jest.fn()} />
+        <ChatList />
       </MemoryRouter>
     );
     expect(asFragment()).toMatchSnapshot();

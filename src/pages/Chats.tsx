@@ -1,86 +1,50 @@
-import React, {
-  FC,
-  MouseEventHandler,
-  useCallback,
-  useEffect,
-  useRef,
-} from 'react';
+import React, { FC, useRef } from 'react';
 import { Form } from '../components/FormFunc/Form';
-import { nanoid } from 'nanoid';
-import { CONSTANTS } from '../constants';
 import { ChatList } from '../components/ChatList/ChatList';
-import { Chat, Messages } from '../App';
 import { Navigate, useParams } from 'react-router-dom';
 import { List } from '../components/List/List';
+import { WithClasses } from '../HOC/WithClasses';
+import { shallowEqual, useSelector } from 'react-redux';
+import { selectChatList, selectChats } from '../store/chats/selectors';
 
-interface ChatsProps {
-  messages: Messages;
-  setMessages: React.Dispatch<React.SetStateAction<Messages>>;
-  chatList: Chat[];
-  onAddChat: (chats: Chat) => void;
-  deleteChat: (
-    chatName: string
-  ) => MouseEventHandler<HTMLButtonElement> | undefined;
-}
-export const Chats: FC<ChatsProps> = ({
-  chatList,
-  onAddChat,
-  deleteChat,
-  messages,
-  setMessages,
-}) => {
+export const Chats: FC = () => {
   const { chatId } = useParams();
+  const MessageListWithClass = WithClasses(List);
+
+  const chats = useSelector(selectChats, shallowEqual);
+  const chatList = useSelector(selectChatList, shallowEqual);
   const listEl = useRef<HTMLInputElement>(null);
-  const scrollList = () => {
-    if (listEl.current) listEl.current.scrollTop = listEl.current.scrollHeight;
-  };
+  // const scrollList = () => {
+  //   if (listEl.current) listEl.current.scrollTop = listEl.current.scrollHeight;
+  // };
 
-  useEffect(() => {
-    if (
-      chatId &&
-      messages[chatId]?.length > 0 &&
-      !messages[chatId][messages[chatId].length - 1].systemMessage
-    ) {
-      const timeout = setTimeout(() => {
-        setMessages({
-          ...messages,
-          [chatId]: [
-            ...messages[chatId],
-            {
-              id: nanoid(),
-              message: CONSTANTS.DEFAULT_MESSAGE,
-              author: CONSTANTS.BOT,
-              systemMessage: true,
-            },
-          ],
-        });
-      }, 1000);
+  // useEffect(() => {
+  //   if (
+  //     chatId &&
+  //     messages[chatId]?.length > 0 &&
+  //     !messages[chatId][messages[chatId].length - 1].systemMessage
+  //   ) {
+  //     const timeout = setTimeout(() => {
+  //       setMessages({
+  //         ...messages,
+  //         [chatId]: [
+  //           ...messages[chatId],
+  //           {
+  //             id: nanoid(),
+  //             message: CONSTANTS.DEFAULT_MESSAGE,
+  //             author: CONSTANTS.BOT,
+  //             systemMessage: true,
+  //           },
+  //         ],
+  //       });
+  //     }, 1000);
 
-      return () => {
-        clearTimeout(timeout);
-      };
-    }
-    scrollList();
-  }, [chatId, messages, setMessages]);
-
-  const addMessage = useCallback(
-    (message: string) => {
-      if (chatId) {
-        setMessages((prevMessage) => ({
-          ...prevMessage,
-          [chatId]: [
-            ...prevMessage[chatId],
-            {
-              id: nanoid(),
-              author: CONSTANTS.USER,
-              message,
-            },
-          ],
-        }));
-      }
-    },
-    [chatId, setMessages]
-  );
+  //     return () => {
+  //       clearTimeout(timeout);
+  //     };
+  //   }
+  //   scrollList();
+  // }, [chatId, messages, setMessages]);
 
   if (!chatList.find((chat) => chat.name === chatId)) {
     return <Navigate replace to="/chats" />;
@@ -88,14 +52,14 @@ export const Chats: FC<ChatsProps> = ({
 
   return (
     <div className="wrapper">
-      <ChatList
-        chats={chatList}
-        onAddChat={onAddChat}
-        deleteChat={deleteChat}
-      />
+      <ChatList />
       <div className="content">
-        <List messages={chatId ? messages[chatId] : []} listEl={listEl} />
-        <Form addMessage={addMessage} />
+        <MessageListWithClass
+          messages={chatId ? chats[chatId] : []}
+          classes="list"
+          listEl={listEl}
+        />
+        <Form />
       </div>
     </div>
   );
