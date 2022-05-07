@@ -5,7 +5,7 @@ import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
 
 beforeEach(() => {
-  render(<Form addMessage={jest.fn()} />);
+  render(<Form />);
 });
 
 describe('Form', () => {
@@ -14,7 +14,7 @@ describe('Form', () => {
   });
 
   it('render with snapshot', () => {
-    const { asFragment } = render(<Form addMessage={jest.fn()} />);
+    const { asFragment } = render(<Form />);
     expect(asFragment()).toMatchSnapshot();
   });
 

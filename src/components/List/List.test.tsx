@@ -6,8 +6,8 @@ import '@testing-library/jest-dom';
 describe('List', () => {
   it('render component', () => {
     const messages = [
-      { author: 'Bot', message: 'new message', id: '1' },
-      { author: 'User', message: 'user message', id: '2' },
+      { author: 'Bot', value: 'new message', id: '1' },
+      { author: 'User', value: 'user message', id: '2' },
     ];
     render(<List messages={messages} />);
     expect(screen.getByTestId('messages-list')).toBeInTheDocument();
@@ -15,15 +15,15 @@ describe('List', () => {
 
   it('render with snapshot', () => {
     const messages = [
-      { author: 'Bot', message: 'new message', id: '1' },
-      { author: 'User', message: 'user message', id: '2' },
+      { author: 'Bot', value: 'new message', id: '1' },
+      { author: 'User', value: 'user message', id: '2' },
     ];
     const { asFragment } = render(<List messages={messages} />);
     expect(asFragment()).toMatchSnapshot();
   });
 
   it('check rendering message', () => {
-    const messages = [{ author: 'Bot', message: 'test', id: '1' }];
+    const messages = [{ author: 'Bot', value: 'test', id: '1' }];
     render(<List messages={messages} />);
     expect(screen.getByText(/test/)).toBeInTheDocument();
     expect(screen.getByText(/Bot/)).toBeInTheDocument();
@@ -31,9 +31,9 @@ describe('List', () => {
 
   it('count messages', () => {
     const messages = [
-      { author: 'Bot', message: 'new message', id: '1' },
-      { author: 'User', message: 'new message2', id: '2' },
-      { author: 'User', message: 'new message3', id: '3' },
+      { author: 'Bot', value: 'new message', id: '1' },
+      { author: 'User', value: 'new message2', id: '2' },
+      { author: 'User', value: 'new message3', id: '3' },
     ];
     render(<List messages={messages} />);
     expect(screen.queryAllByRole('message').length).toBe(3);

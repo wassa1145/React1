@@ -6,29 +6,28 @@ import React, {
   memo,
   useRef,
 } from 'react';
+import { useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { addMessage } from '../../store/chats/actions';
 import { Button } from './components/Button/Button';
 import { Textarea } from './components/Textarea/Textarea';
 import './Form.css';
 
-interface FormProps {
-  addMessage: (a: string) => void;
-}
-
-export const Form: FC<FormProps> = memo(({ addMessage }) => {
+export const Form: FC = memo(() => {
   const [message, setMessage] = useState('');
   const textFieldRef = useRef<HTMLInputElement>(null);
-  const handleClick = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    addMessage(message);
+  const { chatId } = useParams();
+  const dispatch = useDispatch();
+
+  const handleClick = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (chatId) {
+      dispatch(addMessage(chatId, message));
+    }
     setMessage('');
     textFieldRef.current?.focus();
   };
-  const changeMessage = useCallback(
-    (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-      setMessage(event.target.value);
-    },
-    []
-  );
 
   useEffect(() => {
     textFieldRef.current?.focus();
@@ -37,7 +36,7 @@ export const Form: FC<FormProps> = memo(({ addMessage }) => {
   return (
     <form className="form" onSubmit={handleClick} data-testid="form">
       <Textarea
-        change={changeMessage}
+        change={(event) => setMessage(event.target.value)}
         message={message}
         textFieldRef={textFieldRef}
         placeholder="Введите сообщение"

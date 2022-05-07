@@ -4,7 +4,7 @@ import './List.css';
 interface Message {
   id: string;
   author: string;
-  message: string;
+  value: string;
   systemMessage?: boolean;
 }
 
@@ -14,7 +14,7 @@ interface MessagesListProps {
 }
 
 export const List: FC<MessagesListProps> = ({ messages, listEl }) => (
-  <div className="list" data-testid="messages-list" ref={listEl}>
+  <div data-testid="messages-list" ref={listEl}>
     <ul>
       {messages.map((message) => (
         <li
@@ -23,7 +23,7 @@ export const List: FC<MessagesListProps> = ({ messages, listEl }) => (
           role="message"
         >
           <p className="message__author">{message.author}</p>
-          <p className="message__text">{message.message}</p>
+          <p className="message__text">{message.value}</p>
         </li>
       ))}
     </ul>
