@@ -7,10 +7,10 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import './ChatList.css';
 
-import { Button } from '../FormFunc/components/Button/Button';
+import { Button } from 'src/components/FormFunc/components/Button/Button';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectChatList } from '../../store/chats/selectors';
-import { addChat, deleteChat } from '../../store/chats/actions';
+import { selectChatList } from 'src/store/chats/selectors';
+import { addChat, deleteChat } from 'src/store/chats/actions';
 
 export const ChatList: FC = () => {
   const [name, setName] = useState('');
@@ -54,6 +54,7 @@ export const ChatList: FC = () => {
             >
               <NavLink
                 to={`/chats/${chat.name}`}
+                data-testid="chat-link"
                 className={({ isActive }) =>
                   isActive ? 'chats-link chats-link_active' : 'chats-link'
                 }

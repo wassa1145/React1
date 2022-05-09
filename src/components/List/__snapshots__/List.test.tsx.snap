@@ -3,7 +3,6 @@
 exports[`List render with snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="list"
     data-testid="messages-list"
   >
     <ul>

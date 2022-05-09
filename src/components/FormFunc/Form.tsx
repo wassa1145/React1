@@ -1,29 +1,29 @@
-import React, {
-  useState,
-  useCallback,
-  useEffect,
-  FC,
-  memo,
-  useRef,
-} from 'react';
+import React, { useState, useEffect, FC, memo, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { addMessage } from '../../store/chats/actions';
-import { Button } from './components/Button/Button';
-import { Textarea } from './components/Textarea/Textarea';
+import { ThunkDispatch } from 'redux-thunk';
+import { ChatsState } from 'src/store/chats/reducer';
+import { AddMessage } from 'src/store/chats/types';
+import { CONSTANTS } from 'src/constants';
+import { addMessageWithReply } from 'src/store/chats/actions';
+import { Button } from 'src/components/FormFunc/components/Button/Button';
+import { Textarea } from 'src/components/FormFunc/components/Textarea/Textarea';
 import './Form.css';
 
 export const Form: FC = memo(() => {
   const [message, setMessage] = useState('');
   const textFieldRef = useRef<HTMLInputElement>(null);
   const { chatId } = useParams();
-  const dispatch = useDispatch();
+  const dispatch =
+    useDispatch<ThunkDispatch<ChatsState, void, ReturnType<AddMessage>>>();
 
   const handleClick = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (chatId) {
-      dispatch(addMessage(chatId, message));
+    if (chatId && message) {
+      dispatch(
+        addMessageWithReply(chatId, { value: message, author: CONSTANTS.USER })
+      );
     }
     setMessage('');
     textFieldRef.current?.focus();

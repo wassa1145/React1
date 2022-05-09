@@ -1,7 +1,7 @@
 import { AppBar, Button, Toolbar } from '@mui/material';
 import React, { FC, useContext } from 'react';
 import { Outlet, NavLink } from 'react-router-dom';
-import { ThemeContext } from '../../utils/ThemeContext';
+import { ThemeContext } from 'src/utils/ThemeContext';
 import './Header.css';
 
 const navigate = [

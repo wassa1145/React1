@@ -1,11 +1,11 @@
 import React, { FC } from 'react';
+import { CONSTANTS } from '../../constants';
 import './List.css';
 
 interface Message {
   id: string;
   author: string;
   value: string;
-  systemMessage?: boolean;
 }
 
 interface MessagesListProps {
@@ -19,7 +19,9 @@ export const List: FC<MessagesListProps> = ({ messages, listEl }) => (
       {messages.map((message) => (
         <li
           key={message.id}
-          className={message.systemMessage ? 'system-message' : 'message'}
+          className={
+            message.author === CONSTANTS.BOT ? 'system-message' : 'message'
+          }
           role="message"
         >
           <p className="message__author">{message.author}</p>

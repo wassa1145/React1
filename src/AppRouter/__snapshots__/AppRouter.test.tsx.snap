@@ -61,9 +61,27 @@ exports[`App render with snapshot 1`] = `
             class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
           />
         </button>
+        <button
+          class="MuiButton-root MuiButton-text MuiButton-textInherit MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorInherit MuiButtonBase-root  css-1y942vo-MuiButtonBase-root-MuiButton-root"
+          tabindex="0"
+          type="button"
+        >
+          <a
+            class="header__link"
+            href="/about"
+            id="About"
+          >
+            About
+          </a>
+          <span
+            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+          />
+        </button>
       </div>
     </header>
-    <main>
+    <main
+      class=""
+    >
       <h2>
         Home Page
       </h2>
