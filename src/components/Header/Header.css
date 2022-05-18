@@ -6,3 +6,6 @@
 	text-decoration: none;
 	text-transform: uppercase;
 }
+.header__wrapper {
+	justify-content: space-between;
+}
