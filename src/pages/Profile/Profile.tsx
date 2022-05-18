@@ -1,10 +1,10 @@
 import React, { FC, useContext, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { ThemeContext } from './../utils/ThemeContext';
-import { changeName, toggleProfile } from '../store/profile/actions';
+import { ThemeContext } from 'src/utils/ThemeContext';
 import { Button, TextField } from '@mui/material';
-import { selectName, selectVisible } from './../store/profile/selectors';
+import { selectName, selectVisible } from 'src/store/profile/selectors';
+import { changeName, toggleProfile } from 'src/store/profile/slice';
 
 export const Profile: FC = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
@@ -43,7 +43,7 @@ export const Profile: FC = () => {
         </div>
       </div>
       <div className="box">
-        <input type="checkbox" checked={visible} />
+        <input type="checkbox" checked={visible} readOnly={true} />
         <Button variant="outlined" onClick={() => dispatch(toggleProfile())}>
           change visible
         </Button>

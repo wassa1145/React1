@@ -14,6 +14,7 @@ module.exports = {
 
   moduleNameMapper: {
     '\\.(css)$': 'identity-obj-proxy',
+    '^src/(.*)$': '<rootDir>/src/$1',
   },
 
   testEnvironment: 'jsdom',

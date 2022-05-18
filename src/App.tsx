@@ -1,22 +1,12 @@
-import React, { FC, useState, Suspense } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-
-import { ThemeContext, defaultContext } from './utils/ThemeContext';
-
+import React, { FC, useState } from 'react';
+import { ThemeContext, defaultContext } from 'src/utils/ThemeContext';
+import { PersistGate } from 'redux-persist/integration/react';
 import './App.css';
 
-import { ChatList } from './components/ChatList/ChatList';
-
-import { Header } from './components/Header/Header';
-import { Home } from './pages/Home';
-import { Profile } from './pages/Profile';
-import { AboutWithConnect } from './pages/About';
-
-const Chats = React.lazy(() =>
-  import('./pages/Chats').then((module) => ({
-    default: module.Chats,
-  }))
-);
+import { AppRouter } from 'src/AppRouter/AppRouter';
+import { Provider } from 'react-redux';
+import { persistor, store } from 'src/store';
+import { BrowserRouter } from 'react-router-dom';
 
 export const App: FC = () => {
   const [theme, setTheme] = useState(defaultContext.theme);
@@ -32,22 +22,13 @@ export const App: FC = () => {
         toggleTheme,
       }}
     >
-      <Suspense fallback={<div>Loading...</div>}>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Header />}>
-              <Route index element={<Home />} />
-              <Route path="profile" element={<Profile />} />
-              <Route path="chats">
-                <Route index element={<ChatList />} />
-                <Route path=":chatId" element={<Chats />} />
-              </Route>
-              <Route path="about" element={<AboutWithConnect />} />
-            </Route>
-            <Route path="*" element={<h2>404</h2>} />
-          </Routes>
-        </BrowserRouter>
-      </Suspense>
+      <Provider store={store}>
+        <PersistGate persistor={persistor}>
+          <BrowserRouter>
+            <AppRouter />
+          </BrowserRouter>
+        </PersistGate>
+      </Provider>
     </ThemeContext.Provider>
   );
 };

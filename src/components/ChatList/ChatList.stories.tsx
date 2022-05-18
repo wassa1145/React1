@@ -1,7 +1,9 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { ChatList } from './ChatList';
-import { BrowserRouter } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { store } from 'src/store';
 
 export default {
   title: 'MyComponents/ChatList',
@@ -13,9 +15,11 @@ export default {
 } as ComponentMeta<typeof ChatList>;
 
 const Template: ComponentStory<typeof ChatList> = (args) => (
-  <BrowserRouter>
-    <ChatList {...args} />
-  </BrowserRouter>
+  <Provider store={store}>
+    <MemoryRouter>
+      <ChatList {...args} />
+    </MemoryRouter>
+  </Provider>
 );
 
 export const Primary = Template.bind({});

@@ -3,9 +3,18 @@ import { Form } from './Form';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
+import { Provider } from 'react-redux';
+import { MemoryRouter } from 'react-router-dom';
+import { store } from 'src/store';
 
 beforeEach(() => {
-  render(<Form />);
+  render(
+    <Provider store={store}>
+      <MemoryRouter>
+        <Form />
+      </MemoryRouter>
+    </Provider>
+  );
 });
 
 describe('Form', () => {
@@ -14,7 +23,13 @@ describe('Form', () => {
   });
 
   it('render with snapshot', () => {
-    const { asFragment } = render(<Form />);
+    const { asFragment } = render(
+      <Provider store={store}>
+        <MemoryRouter>
+          <Form />
+        </MemoryRouter>
+      </Provider>
+    );
     expect(asFragment()).toMatchSnapshot();
   });
 

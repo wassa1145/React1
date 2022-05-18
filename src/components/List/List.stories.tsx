@@ -6,9 +6,6 @@ import { List } from './List';
 export default {
   title: 'MyComponents/List',
   component: List,
-  // argTypes: {
-  //   onListClick: { action: 'click' },
-  // },
 } as ComponentMeta<typeof List>;
 
 const Template: ComponentStory<typeof List> = (args) => <List {...args} />;
@@ -20,14 +17,12 @@ Messages.args = {
     {
       author: 'Mr. Robot',
       value: 'Мы получили ваше сообщение! В ближайшее время мы вам ответим.',
-      systemMessage: true,
       id: '2',
     },
     { author: 'User', value: 'Сообщение 2', id: '3' },
     {
       author: 'Mr. Robot',
       value: 'Мы получили ваше сообщение! В ближайшее время мы вам ответим.',
-      systemMessage: true,
       id: '4',
     },
   ],

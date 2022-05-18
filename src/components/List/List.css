@@ -6,8 +6,8 @@
   flex-grow: 1;
   overflow-y: auto;
 }
-.list ul {
-  display: flex;
+ul {
+  display: flex !important;
   flex-direction: column;
 }
 ul,p {

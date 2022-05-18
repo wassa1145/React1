@@ -19,7 +19,8 @@ exports[`ChatList render with snapshot 1`] = `
         >
           <a
             class="chats-link"
-            href="/chats/First"
+            data-testid="chat-link"
+            href="/chats/gb"
           >
             <div
               class="MuiListItemButton-root MuiListItemButton-gutters MuiButtonBase-root css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
@@ -32,50 +33,7 @@ exports[`ChatList render with snapshot 1`] = `
                 <span
                   class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
                 >
-                  First
-                </span>
-              </div>
-              <span
-                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-              />
-            </div>
-          </a>
-          <div
-            class="MuiListItemSecondaryAction-root css-518kzi-MuiListItemSecondaryAction-root"
-          >
-            <button
-              class="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButtonBase-root button-delete css-1e6y48t-MuiButtonBase-root-MuiButton-root"
-              role="button-delete"
-              tabindex="0"
-              type="button"
-            >
-              X
-              <span
-                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-              />
-            </button>
-          </div>
-        </li>
-        <li
-          class="MuiListItem-root MuiListItem-gutters chat-item css-g28sfz-MuiListItem-root"
-          role="chat"
-        >
-          <a
-            class="chats-link"
-            href="/chats/Second"
-          >
-            <div
-              class="MuiListItemButton-root MuiListItemButton-gutters MuiButtonBase-root css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
-              role="button"
-              tabindex="0"
-            >
-              <div
-                class="MuiListItemText-root css-tlelie-MuiListItemText-root"
-              >
-                <span
-                  class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
-                >
-                  Second
+                  gb
                 </span>
               </div>
               <span
