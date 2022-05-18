@@ -10,7 +10,7 @@ import './ChatList.css';
 import { Button } from 'src/components/FormFunc/components/Button/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectChatList } from 'src/store/chats/selectors';
-import { addChat, deleteChat } from 'src/store/chats/actions';
+import { addChat, deleteChat } from 'src/store/chats/slice';
 
 export const ChatList: FC = () => {
   const [name, setName] = useState('');
@@ -26,7 +26,7 @@ export const ChatList: FC = () => {
     e.preventDefault();
 
     if (name) {
-      dispatch(addChat(name));
+      dispatch(addChat({ name }));
       setName('');
     }
   };
@@ -43,7 +43,7 @@ export const ChatList: FC = () => {
               className="chat-item"
               secondaryAction={
                 <ButtonUI
-                  onClick={() => dispatch(deleteChat(chat.name))}
+                  onClick={() => dispatch(deleteChat({ chatName: chat.name }))}
                   className="button-delete"
                   role="button-delete"
                 >

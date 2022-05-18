@@ -5,7 +5,7 @@ import { ThunkDispatch } from 'redux-thunk';
 import { ChatsState } from 'src/store/chats/reducer';
 import { AddMessage } from 'src/store/chats/types';
 import { CONSTANTS } from 'src/constants';
-import { addMessageWithReply } from 'src/store/chats/actions';
+import { addMessageWithReply } from 'src/store/chats/slice';
 import { Button } from 'src/components/FormFunc/components/Button/Button';
 import { Textarea } from 'src/components/FormFunc/components/Textarea/Textarea';
 import './Form.css';
@@ -22,7 +22,10 @@ export const Form: FC = memo(() => {
 
     if (chatId && message) {
       dispatch(
-        addMessageWithReply(chatId, { value: message, author: CONSTANTS.USER })
+        addMessageWithReply({
+          chatId,
+          message: { author: CONSTANTS.USER, value: message },
+        })
       );
     }
     setMessage('');
