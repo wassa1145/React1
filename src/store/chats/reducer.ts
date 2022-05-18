@@ -4,12 +4,6 @@ import { ChatsActions, MessageState } from './types';
 import { nanoid } from 'nanoid';
 import { CONSTANTS } from '../../constants';
 
-// export interface Message {
-//   id: string;
-//   author: string;
-//   value: string;
-// }
-
 export interface ChatsState {
   [key: string]: MessageState[];
 }

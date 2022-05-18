@@ -3,7 +3,7 @@ import { ThemeContext, defaultContext } from 'src/utils/ThemeContext';
 import { PersistGate } from 'redux-persist/integration/react';
 import './App.css';
 
-import { AppRouter } from 'src/AppRouter/AppRouter';
+import { AppRouter } from 'src/components/AppRouter/AppRouter';
 import { Provider } from 'react-redux';
 import { persistor, store } from 'src/store';
 import { BrowserRouter } from 'react-router-dom';
