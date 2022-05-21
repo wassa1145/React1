@@ -4,3 +4,5 @@ export const CONSTANTS = {
   DEFAULT_MESSAGE:
     'Мы получили ваше сообщение! В ближайшее время мы вам ответим.',
 };
+
+export const api = 'https://api.spaceflightnewsapi.net/v3/articles';
