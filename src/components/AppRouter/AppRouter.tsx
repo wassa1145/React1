@@ -1,4 +1,4 @@
-import React, { FC, Suspense } from 'react';
+import React, { FC, Suspense, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import { AboutWithConnect } from 'src/pages/About';
@@ -12,15 +12,32 @@ import { SignIn } from 'src/pages/SignIn';
 import { SignUp } from 'src/pages/SignUp';
 import { PrivateRoute } from '../PrivateRoute';
 import { PublicRoute } from '../PublicRoute';
+import { auth } from 'src/services/firebase';
+import { changeAuth } from 'src/store/profile/slice';
+import { useDispatch } from 'react-redux';
+import { ThunkDispatch } from 'redux-thunk';
+import { initialMessagesFB } from 'src/store/chats/slice';
 
-// const Chats = React.lazy(() =>
-//   import('src/pages/Chats/Chats').then((module) => ({
-//     default: module.Chats,
-//   }))
-// );
+export const AppRouter: FC = () => {
+  const dispatch = useDispatch<ThunkDispatch<ChatState, void, any>>();
 
-export const AppRouter: FC = () => (
-  <Suspense fallback={<div>Loading...</div>}>
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        dispatch(changeAuth(true));
+      } else {
+        dispatch(changeAuth(false));
+      }
+    });
+
+    return unsubscribe;
+  }, []);
+
+  useEffect(() => {
+    dispatch(initialMessagesFB());
+  }, []);
+
+  return (
     <Routes>
       <Route path="/" element={<Header />}>
         <Route index element={<Home />} />
@@ -68,5 +85,5 @@ export const AppRouter: FC = () => (
 
       <Route path="*" element={<h2>404</h2>} />
     </Routes>
-  </Suspense>
-);
+  );
+};
