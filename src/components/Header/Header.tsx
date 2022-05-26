@@ -1,11 +1,14 @@
 import { AppBar, Button, Toolbar } from '@mui/material';
-import React, { FC, useContext } from 'react';
+import React, { FC, useContext, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Outlet, NavLink, Link } from 'react-router-dom';
 import { selectAuth } from 'src/store/profile/selectors';
-import { changeAuth } from 'src/store/profile/slice';
+// import { changeAuth } from 'src/store/profile/slice';
+import { logOut } from 'src/services/firebase';
 import { ThemeContext } from 'src/utils/ThemeContext';
+
 import './Header.css';
+import { changeAuth } from 'src/store/profile/slice';
 
 const navigate = [
   {
@@ -39,6 +42,16 @@ export const Header: FC = () => {
   const { theme } = useContext(ThemeContext);
   const dispatch = useDispatch();
   const auth = useSelector(selectAuth);
+  const [error, setError] = useState('');
+
+  const handleSignOut = async () => {
+    setError('');
+    try {
+      await logOut();
+    } catch (err) {
+      setError((err as Error).message);
+    }
+  };
   return (
     <header className="header">
       <AppBar
@@ -63,10 +76,13 @@ export const Header: FC = () => {
             ))}
           </div>
           {auth ? (
-            <button onClick={() => dispatch(changeAuth(false))}>logout</button>
+            <button onClick={handleSignOut}>logout</button>
           ) : (
-            <Link to="/signin">SingIn</Link>
+            <>
+              <Link to="/signin">SingIn</Link> |<Link to="/signup">SingUp</Link>
+            </>
           )}
+          {error && <p style={{ color: 'red' }}>{error}</p>}
         </Toolbar>
       </AppBar>
       <main className={theme === 'light' ? '' : 'main-dark'}>

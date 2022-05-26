@@ -8,14 +8,14 @@ import ListItemText from '@mui/material/ListItemText';
 import './ChatList.css';
 
 import { Button } from 'src/components/FormFunc/components/Button/Button';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { selectChatList } from 'src/store/chats/selectors';
-import { addChat, deleteChat } from 'src/store/chats/slice';
+import { push, remove } from 'firebase/database';
+import { chatsRef, getChatsById } from 'src/services/firebase';
+import { nanoid } from 'nanoid';
 
 export const ChatList: FC = () => {
   const [name, setName] = useState('');
-
-  const dispatch = useDispatch();
 
   const chatList = useSelector(
     selectChatList,
@@ -24,11 +24,22 @@ export const ChatList: FC = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    console.log(chatList);
 
     if (name) {
-      dispatch(addChat({ name }));
+      const id = nanoid();
+      push(chatsRef, {
+        id,
+        messageList: {
+          empty: true,
+        },
+        name,
+      });
       setName('');
     }
+  };
+  const handleDeleteChat = (id: string) => {
+    remove(getChatsById(id));
   };
 
   return (
@@ -43,7 +54,7 @@ export const ChatList: FC = () => {
               className="chat-item"
               secondaryAction={
                 <ButtonUI
-                  onClick={() => dispatch(deleteChat({ chatName: chat.name }))}
+                  onClick={() => handleDeleteChat(chat.id)}
                   className="button-delete"
                   role="button-delete"
                 >
@@ -53,7 +64,7 @@ export const ChatList: FC = () => {
               disablePadding
             >
               <NavLink
-                to={`/chats/${chat.name}`}
+                to={`/chats/${chat.id}`}
                 data-testid="chat-link"
                 className={({ isActive }) =>
                   isActive ? 'chats-link chats-link_active' : 'chats-link'

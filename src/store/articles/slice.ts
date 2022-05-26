@@ -20,8 +20,6 @@ const initialState: ArticlesState = {
 export const getArticles = createAsyncThunk(
   'articles/getArticles',
   async () => {
-    console.log('1111');
-
     const response = await fetch(api);
     return await response.json();
   }
